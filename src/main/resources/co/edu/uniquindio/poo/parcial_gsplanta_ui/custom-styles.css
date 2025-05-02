@@ -1,0 +1,405 @@
+.root {
+    -fx-font-family: "System", "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    -fx-background-color: #2D3447; /* Dark Blue/Gray */
+    -fx-padding: 20 0 0 0; /* Top padding, no side/bottom padding */
+}
+
+.sidebar .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #AAB3CA; /* Light gray text */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: center-left;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-pref-height: 45px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #3A435E; /* Slightly lighter background on hover */
+    -fx-text-fill: white;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #5C8AFF; /* Accent color */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    /* Also apply base styles in case they are removed */
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: center-left;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-pref-height: 45px;
+}
+
+/* --- Content Area --- */
+.content-background {
+    -fx-background-color: #F4F7FA; /* Light Gray Background */
+}
+
+.content-pane {
+    -fx-background-color: #F4F7FA;
+    -fx-padding: 20px;
+}
+
+.title-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2D3447; /* Match sidebar color */
+    -fx-padding-bottom: 15px;
+}
+
+/* --- General Controls --- */
+.label {
+    -fx-text-fill: #444; /* Default label color */
+}
+
+.text-field, .text-area, .combo-box .text-field { /* Style the editable part of ComboBox like TextField */
+    -fx-background-color: white;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #999;
+    -fx-padding: 8px;
+}
+.text-area {
+    -fx-font-family: "Consolas", "Monaco", monospace;
+}
+/* Style the non-editable ComboBox base */
+.combo-box-base {
+    -fx-background-color: white;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 1px; /* Minimal padding around */
+}
+.combo-box-base:hover {
+    -fx-border-color: #BCC5D3;
+}
+
+.text-field:focused, .text-area:focused, .combo-box-base:focused, .combo-box:focused .text-field {
+    -fx-border-color: #5C8AFF; /* Accent color on focus */
+    -fx-border-width: 1.5px;
+    -fx-prompt-text-fill: transparent; /* Hide prompt on focus if desired */
+}
+.combo-box .list-cell {
+    -fx-padding: 5px 10px; /* Padding for items in dropdown */
+    -fx-background-color: white;
+    -fx-text-fill: #333;
+}
+.combo-box .list-cell:filled:hover {
+    -fx-background-color: #EAF2FF; /* Light blue hover */
+    -fx-text-fill: #2D3447;
+}
+.combo-box .list-cell:filled:selected {
+    -fx-background-color: #5C8AFF; /* Accent color selected */
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 1);
+}
+
+
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 4px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+}
+
+/* Primary Action Button Style */
+.action-button {
+    -fx-background-color: #5C8AFF; /* Accent Blue */
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+.action-button:hover {
+    -fx-background-color: #4A7EE8; /* Darker blue */
+}
+.action-button:pressed {
+    -fx-background-color: #3A6BD8;
+}
+
+/* Secondary Action Button Style */
+.action-button-secondary {
+    -fx-background-color: #E7EAF0; /* Light Gray */
+    -fx-text-fill: #444; /* Dark Gray Text */
+    -fx-font-size: 12px;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1px;
+}
+.action-button-secondary:hover {
+    -fx-background-color: #DAE0E8; /* Slightly darker gray */
+}
+.action-button-secondary:pressed {
+    -fx-background-color: #CDD6E0;
+}
+
+/* --- TableView --- */
+.table-view {
+    -fx-border-color: #DDE3EA;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px; /* Table border */
+    -fx-background-color: white; /* Ensure background is white */
+    -fx-padding: 0; /* Remove default padding if any */
+}
+
+/* Header */
+.table-view .column-header-background {
+    -fx-background-color: #F4F7FA; /* Very light header */
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 40; /* Header height */
+    -fx-border-color: transparent #DDE3EA transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 0;
+}
+.table-view .column-header:last-visible {
+    -fx-border-width: 0; /* No border on the right of the last header */
+}
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #555;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10px 0 10px;
+}
+
+/* Cells and Rows */
+.table-view .table-cell{
+    -fx-border-color: transparent #E8EEF3 transparent transparent; /* Lighter cell border */
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 8px 10px;
+    -fx-alignment: center-left;
+}
+.table-view .table-cell:last-visible {
+    -fx-border-width: 0; /* No border on the right of the last cell */
+}
+
+.table-row-cell {
+    -fx-background-insets: 0; /* Override default insets */
+    -fx-padding: 0;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #FFFFFF;
+}
+.table-row-cell:even{
+    -fx-background-color: #FAFBFC;
+}
+.table-row-cell:hover {
+    -fx-background-color: #EAF2FF; /* Light blue hover */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #CDE1FF; /* Light blue selection */
+    -fx-text-background-color: #2D3447; /* Dark text on selection */
+}
+/* Ensure text color changes on selection for all cells in the row */
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: #2D3447;
+}
+.table-row-cell:selected .table-cell .text {
+    -fx-fill: #2D3447; /* Ensure wrapped text color changes on selection */
+}
+
+/* Placeholder for empty table */
+.table-view .placeholder .label {
+    -fx-text-fill: #888;
+}
+
+/* Style for wrapped text in cells */
+.table-cell .text {
+    -fx-fill: -fx-text-background-color; /* Use the cell's text color */
+    -fx-font-family: "System", "Segoe UI", sans-serif; /* Match default */
+    /* text-origin: VPos.TOP; */ /* Align wrapped text to top */
+}
+
+
+/* --- Other Controls --- */
+.separator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 1px 0 0 0; /* Top border */
+    -fx-border-color: #DDE3EA; /* Light line color */
+}
+
+.check-box {
+    -fx-padding: 5 0 5 0;
+}
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1px;
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+}
+.check-box:selected .box {
+    -fx-background-color: white; /* Keep background white */
+}
+.check-box:selected .mark {
+    -fx-background-color: #5C8AFF; /* Accent color check */
+    -fx-shape: "M1,4 L4,7 L9,0"; /* Basic check shape */
+    -fx-scale-shape: false; /* Prevent scaling */
+    -fx-padding: 3px; /* Size of the check mark */
+}
+.check-box:hover .box {
+    -fx-border-color: #BCC5D3;
+}
+.check-box:focused .box {
+    -fx-border-color: #5C8AFF;
+    -fx-border-width: 1.5px;
+}
+
+/* --- Dashboard Styles --- */
+.summary-card {
+    -fx-background-color: white;
+    -fx-padding: 20px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0.1, 0, 3); /* Subtle shadow */
+    -fx-min-width: 200px;
+    -fx-spacing: 8px;
+}
+
+.card-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #66758A; /* Muted text color */
+    -fx-font-weight: normal;
+}
+
+.card-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2D3447; /* Dark blue/gray */
+}
+
+.sub-title-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #444;
+    -fx-padding-bottom: 8px;
+}
+
+.device-counts-textflow {
+    -fx-line-spacing: 5px;
+    -fx-padding: 10px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E8EEF3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.device-type-name {
+    -fx-font-weight: bold;
+    -fx-fill: #444; /* Standard text color for type */
+}
+
+.device-type-count {
+    -fx-fill: #5C8AFF; /* Accent color */
+    -fx-font-weight: bold;
+}
+
+/* --- Style for TitledPane in Security Section --- */
+.titled-pane {
+    -fx-text-fill: #333; /* Default text for title */
+}
+.titled-pane > .title {
+    -fx-background-color: #E7EAF0; /* Light gray background for title */
+    -fx-background-radius: 4 4 0 0;
+    -fx-padding: 8px 12px;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 1 1 1 1; /* Border around title */
+}
+.titled-pane:focused > .title {
+    -fx-border-color: #5C8AFF; /* Accent color border on focus */
+}
+
+.titled-pane > *.content {
+    -fx-background-color: white;
+    -fx-border-color: #DDE3EA;
+    -fx-border-width: 0 1 1 1; /* Left, bottom, right border */
+    -fx-padding: 15px;
+    -fx-background-radius: 0 0 4 4;
+    -fx-border-radius: 0 0 4 4;
+}
+.titled-pane > .title > .text {
+    -fx-font-weight: bold;
+    -fx-fill: #333; /* Explicitly set title text color */
+}
+/* Hide the arrow since it's not collapsible */
+.titled-pane > .title > .arrow-button {
+    -fx-padding: 0;
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+}
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: null;
+    -fx-shape: null;
+    -fx-padding: 0;
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+}
+
+/* Style scroll panes if needed */
+.scroll-pane {
+    -fx-background-color: transparent; /* Make base transparent */
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent; /* Viewport transparent */
+}
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+/* Style scroll bars */
+.scroll-bar:vertical, .scroll-bar:horizontal{
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+}
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #BCC5D3; /* Scroll thumb color */
+    -fx-background-insets: 2;
+    -fx-background-radius: 0.5em; /* Rounded thumb */
+}
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #AAB3CA; /* Darker thumb on hover */
+}
+.scroll-bar .increment-button ,
+.scroll-bar .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+}
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding:0;
+}

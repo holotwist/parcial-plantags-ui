@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.text.TextFlow?>
+<BorderPane prefHeight="800.0" prefWidth="1250.0" stylesheets="@custom-styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.parcial_gsplanta_ui.MainController">
+    <left>
+        <VBox fx:id="sidebar" alignment="TOP_CENTER" prefWidth="220.0" spacing="10.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+            <children>
+                <Label text="GS Planta" textFill="white">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="30.0" />
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showDashboard" styleClass="sidebar-button" text="Dashboard">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnProducts" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showProductManagement" styleClass="sidebar-button" text="Productos">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnSecurity" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showSecurityMonitoring" styleClass="sidebar-button" text="Seguridad">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Region VBox.vgrow="ALWAYS" />
+                <Button fx:id="btnLogout" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" styleClass="sidebar-button" text="Salir">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-background" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane fx:id="dashboardPane" styleClass="content-pane">
+                    <children>
+                        <VBox alignment="TOP_LEFT" spacing="25.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                            <children>
+                                <Label styleClass="title-label" text="Dashboard Resumen" />
+                                <FlowPane hgap="20.0" vgap="20.0">
+                                    <children>
+                                        <VBox styleClass="summary-card">
+                                            <children>
+                                                <Label styleClass="card-title" text="Productos Totales" />
+                                                <Label fx:id="lblTotalProducts" styleClass="card-value" text="-" />
+                                            </children>
+                                        </VBox>
+                                        <VBox styleClass="summary-card">
+                                            <children>
+                                                <Label styleClass="card-title" text="Dispositivos Totales" />
+                                                <Label fx:id="lblTotalDevices" styleClass="card-value" text="-" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </FlowPane>
+                                <Separator prefWidth="200.0" />
+                                <Label styleClass="sub-title-label" text="Dispositivos por Tipo" />
+                                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                                    <content>
+                                        <TextFlow fx:id="deviceTypeCountsTextFlow" styleClass="device-counts-textflow" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+                <AnchorPane fx:id="productPane" styleClass="content-pane" visible="false">
+                    <children>
+                        <VBox spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                            <Label styleClass="title-label" text="Gestión de Productos" />
+                            <GridPane hgap="10.0" vgap="8.0">
+                                <children>
+                                    <Label text="Nombre:" GridPane.rowIndex="0" />
+                                    <TextField fx:id="txtProductName" promptText="Ej: Jugo Verde" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <Label text="Precio:" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtProductPrice" promptText="Ej: 12.50" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Componentes:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                    <TextField fx:id="txtProductComponents" promptText="Ej: Limón,Espinaca" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1"/>
+                                    <Button fx:id="btnAddProduct" defaultButton="true" mnemonicParsing="false" onAction="#handleAddProduct" text="Agregar Producto" styleClass="action-button" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.rowSpan="2" />
+                                </children>
+                                <VBox.margin><Insets bottom="10.0" /></VBox.margin>
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                            </GridPane>
+                            <Separator prefWidth="200.0" />
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <children>
+                                    <Label text="Filtrar:" />
+                                    <TextField fx:id="txtFilterComponent" promptText="Componente" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="btnFilterProduct" mnemonicParsing="false" onAction="#handleFilterProduct" text="Aplicar Filtro" styleClass="action-button-secondary" />
+                                    <Button fx:id="btnSortProductPrice" mnemonicParsing="false" onAction="#handleSortProductPrice" text="Ordenar $" styleClass="action-button-secondary" />
+                                    <Button fx:id="btnShowAllProducts" mnemonicParsing="false" onAction="#handleShowAllProducts" text="Mostrar Todos" styleClass="action-button-secondary" />
+                                    <Button fx:id="btnCountProductNames" mnemonicParsing="false" onAction="#handleCountProductNames" text="Contar" styleClass="action-button-secondary" />
+                                </children>
+                            </HBox>
+                            <TableView fx:id="tvProducts" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colProductName" prefWidth="250.0" text="Nombre" />
+                                    <TableColumn fx:id="colProductPrice" prefWidth="100.0" text="Precio" />
+                                    <TableColumn fx:id="colProductComponents" prefWidth="400.0" text="Componentes" />
+                                </columns>
+                                <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                            </TableView>
+                            <TextArea fx:id="taProductOutput" editable="false" prefHeight="60.0" wrapText="true" promptText="Mensajes..." />
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+                <AnchorPane fx:id="securityPane" styleClass="content-pane" visible="false">
+                    <children>
+                        <VBox spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                            <children>
+                                <Label styleClass="title-label" text="Monitoreo y Gestión de Seguridad" />
+
+                                <TitledPane animated="false" collapsible="false" text="Agregar Nuevo Dispositivo">
+                                    <content>
+                                        <GridPane hgap="10.0" vgap="8.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="120.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                                <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="120.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Tipo Dispositivo:" />
+                                                <ComboBox fx:id="cmbDeviceType" prefWidth="150.0" promptText="Seleccionar..." GridPane.columnIndex="1" />
+                                                <Label text="Nombre:" GridPane.rowIndex="1" />
+                                                <TextField fx:id="txtDeviceName" promptText="Ej: Sensor Entrada" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Prioridad:" GridPane.columnIndex="2" />
+                                                <TextField fx:id="txtDevicePriority" promptText="Ej: 5" GridPane.columnIndex="3" />
+                                                <Label fx:id="lblDeviceInitialState" text="Estado Inicial:" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="chkDeviceActive" text="Activo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                                <Label fx:id="lblDeviceToDecorate" text="Dispositivo Base:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <ComboBox fx:id="cmbDeviceToDecorate" prefWidth="150.0" promptText="Seleccionar base..." GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                                                <Button fx:id="btnAddDevice" mnemonicParsing="false" onAction="#handleAddDevice" text="Agregar Dispositivo" styleClass="action-button" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                                            </children>
+                                            <padding>
+                                                <Insets top="10.0" bottom="5.0"/>
+                                            </padding>
+                                        </GridPane>
+                                    </content>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </TitledPane>
+
+                                <Separator prefWidth="200.0" />
+
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="btnShowDeviceStates" mnemonicParsing="false" onAction="#handleShowDeviceStates" text="Refrescar" styleClass="action-button-secondary" />
+                                        <Button fx:id="btnSortDevicePriority" mnemonicParsing="false" onAction="#handleSortDevicePriority" text="Ordenar Prioridad" styleClass="action-button-secondary" />
+                                        <Button fx:id="btnFilterDeviceModules" mnemonicParsing="false" onAction="#handleFilterDeviceModules" text="Filtrar Módulos" styleClass="action-button-secondary" />
+                                        <Button fx:id="btnShowAllDevices" mnemonicParsing="false" onAction="#handleShowAllDevices" text="Mostrar Todos" styleClass="action-button-secondary" />
+                                        <Button fx:id="btnCountDeviceTypes" mnemonicParsing="false" onAction="#handleCountDeviceTypes" text="Contar Tipos" styleClass="action-button-secondary" />
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="tvDevices" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colDeviceType" prefWidth="250.0" text="Tipo Dispositivo" />
+                                        <TableColumn fx:id="colDeviceState" prefWidth="450.0" text="Estado Actual" />
+                                        <TableColumn fx:id="colDevicePriority" prefWidth="100.0" text="Prioridad" />
+                                    </columns>
+                                    <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                                </TableView>
+                                <TextArea fx:id="taDeviceOutput" editable="false" prefHeight="60.0" wrapText="true" promptText="Mensajes..." />
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>
